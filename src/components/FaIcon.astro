@@ -4,24 +4,24 @@
 import { icon, type IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 interface Props {
-  icon: IconDefinition;
-  class?: string;
+    icon: IconDefinition;
+    class?: string;
 }
 
 const iconHtml = icon(Astro.props.icon, {
-  classes: Array.from(new Set(Astro.props.class?.split(" "))),
+    classes: Array.from(new Set(Astro.props.class?.split(" "))),
 }).html;
 ---
 
 <style is:global>
-  .svg-inline--fa {
-    box-sizing: content-box;
-    display: var(--fa-display, inline-block);
-    height: 1em;
-    overflow: visible;
-    vertical-align: -0.125em;
-    width: var(--fa-width, 1.25em);
-  }
+    .svg-inline--fa {
+        box-sizing: content-box;
+        display: var(--fa-display, inline-block);
+        height: 1em;
+        overflow: visible;
+        vertical-align: -0.125em;
+        width: var(--fa-width, 1.25em);
+    }
 </style>
 
 <Fragment set:html={iconHtml} />

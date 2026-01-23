@@ -11,33 +11,33 @@ interface Props {
 ---
 
 <script>
-  const theme = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme") ?? "light";
-    }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
-  })();
+    const theme = (() => {
+        if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+            return localStorage.getItem("theme") ?? "light";
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            return "dark";
+        }
+        return "light";
+    })();
 
-  document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
 </script>
 
 <html class="h-full" lang="en">
-	<head>
-	  <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{Astro.props.title}</title>
-  </head>
-  <body class="flex h-full flex-col dark:bg-[#10191E] dark:text-white">
-    <script is:inline>/** prevents Firefox from force loading html */</script>
-    <NavBar />
-    <main class={Astro.props.class}>
-      <slot />
-    </main>
-    <Footer />
-	</body>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{Astro.props.title}</title>
+    </head>
+    <body class="flex h-full flex-col dark:bg-[#10191E] dark:text-white">
+        <script is:inline>/** prevents Firefox from force loading html */</script>
+        <NavBar />
+        <main class={Astro.props.class}>
+            <slot />
+        </main>
+        <Footer />
+    </body>
 </html>

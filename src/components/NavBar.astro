@@ -5,35 +5,35 @@ import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 ---
 
 <nav class="mx-auto flex w-full max-w-3xl items-center justify-between p-4 text-xl md:p-8 dark:text-white">
-  <div class="flex items-center">
-    <span class="mr-1 text-3xl">
-      <Fragment set:html={Logo} />
-    </span>
-    <span class="font-bold">
-      Overlap
-    </span>
-  </div>
-  <button class="cursor-pointer" id="theme-swticher">
-    <FaIcon class="not-dark:!hidden" icon={faSun} />
-    <FaIcon class="dark:!hidden" icon={faMoon} />
-  </button>
+    <div class="flex items-center">
+        <span class="mr-1 text-3xl">
+            <Fragment set:html={Logo} />
+        </span>
+        <span class="font-bold">
+            Overlap
+        </span>
+    </div>
+    <button class="cursor-pointer" id="theme-swticher">
+        <FaIcon class="not-dark:hidden!" icon={faSun} />
+        <FaIcon class="dark:hidden!" icon={faMoon} />
+    </button>
 </nav>
 
 <script>
-  document.getElementById("theme-swticher")!.addEventListener("click", () => {
-    const theme = (() => {
-      if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-        return localStorage.getItem("theme") ?? "light";
-      }
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        return "dark";
-      }
-      return "light";
-    })();
+    document.getElementById("theme-swticher")!.addEventListener("click", () => {
+        const theme = (() => {
+            if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+                return localStorage.getItem("theme") ?? "light";
+            }
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                return "dark";
+            }
+            return "light";
+        })();
 
-    const inveresed_theme = theme === "light" ? "dark" : "light";
+        const inveresed_theme = theme === "light" ? "dark" : "light";
 
-    document.documentElement.setAttribute("data-theme", inveresed_theme);
-    localStorage.setItem("theme", inveresed_theme)
-  })
+        document.documentElement.setAttribute("data-theme", inveresed_theme);
+        localStorage.setItem("theme", inveresed_theme)
+    })
 </script>
